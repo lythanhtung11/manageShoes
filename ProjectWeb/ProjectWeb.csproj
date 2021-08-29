@@ -21,6 +21,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <Folder Include="TestGit\" />
     <Folder Include="wwwroot\new\fonts\" />
   </ItemGroup>
 
