@@ -21,8 +21,6 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="asdasd\" />
-    <Folder Include="UUU\" />
     <Folder Include="wwwroot\new\fonts\" />
   </ItemGroup>
 
