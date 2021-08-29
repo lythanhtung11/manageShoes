@@ -21,7 +21,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="TEST\" />
+    <Folder Include="asdasd\" />
     <Folder Include="wwwroot\new\fonts\" />
   </ItemGroup>
 
