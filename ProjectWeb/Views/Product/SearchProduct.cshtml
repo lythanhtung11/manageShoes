@@ -1,0 +1,46 @@
+﻿@model List<Product>
+@if (Model.Count == 0)
+{
+    <h1>Can't see any product</h1>
+}
+else
+{
+    <head>
+        <style>
+            .card {
+                width: 250px;
+                border-radius: 5px;
+                padding: 10px;
+                box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
+                transition: 0.3s;
+            }
+
+                .card:hover {
+                    box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2);
+                }
+
+            #margin-card {
+                text-align: center;
+                margin-top: 20px;
+            }
+        </style>
+    </head>
+    <div class="container">
+        <div class="row">
+            @foreach (var item in @Model)
+            {
+                <div class="col-sm-6 col-md-4 col-lg-3" id="margin-card">
+                    <div class="card">
+                        Name:@Html.DisplayFor(m => item.Name)
+                        <img src="~/new/images/@item.Images" style="width:200px;margin:10px;" />
+                        <p>Price: @item.Price $</p>
+                        <a class="btn btn-secondary" href="@Url.Action("Details","Product",new { id = item.Id })">Details</a>
+                        <a href="@Url.Action("addCart","Product",new { id = item.Id})">
+                            <img src="~/new/images/cart.jpg" style="width:30px;">
+                        </a>
+                    </div>
+                </div>
+            }
+        </div>
+    </div>
+}

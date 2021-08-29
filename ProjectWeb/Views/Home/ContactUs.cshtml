@@ -1,0 +1,34 @@
+﻿@using Microsoft.AspNetCore.Http;
+<div class="row">
+    <div class="col-md-6">
+        @if (Context.Session.GetString("Username") != null)
+        {
+
+            <h3 style="margin:10px;">Your feedback about my store , thank you </h3>
+            @using (Html.BeginForm("ContactUs", "Home", FormMethod.Post, new { @class = "form-horizontal", role = "form" }))
+            {
+                <div class="col-md-10">
+                    <textarea rows="4" cols="50" name="feedback" placeholder="Your Feedback...."></textarea>
+                    <input type="hidden" value="@Context.Session.GetString("Username")" name="username" />
+                </div>
+                <input class="btn btn-success" type="submit" style="margin:20px;" value="Send" />
+            }
+
+        }
+    </div>
+        <div class="col-md-6">
+            <h2>Address: 1 Quang Trung Quận 12 TP Hồ Chí Minh</h2>
+            <div id="map" style="height:400px;width :400px;"></div>
+            <script>
+                var map;
+                function initMap() {
+                    map = new google.maps.Map(document.getElementById('map'), {
+                        center: { lat: 10.77030, lng: 106.69241 },
+                        zoom: 8
+                    });
+                }
+            </script>
+            <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAR9OO150XQ3VKuDgdC77nKI-fuQVVRJX0&callback=initMap"></script>
+
+        </div>
+    </div>

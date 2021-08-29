@@ -1,0 +1,53 @@
+﻿@using Microsoft.AspNetCore.Http;
+@{
+    ViewData["Title"] = "ListCart";
+}
+<style>
+    td, th {
+        padding: 10px;
+        text-align: center;
+    }
+</style>
+<script src="~/js/jquery.min.js"></script>
+<div class="list-cart">
+    @using (Html.BeginForm("CreateReceipt", "User", FormMethod.Post, new { @class = "form-horizontal", role = "form" }))
+    {
+        <table class="cart" border="1">
+            <tr>
+                <th>STT</th>
+                <th>Name</th>
+                <th>Image</th>
+                <th>Quantity</th>
+                <th>Price</th>
+                <th>Total Price</th>
+            </tr>
+            @{
+
+                int STT = 0;
+                int totalBill = 0;
+                foreach (var item in ViewBag.carts)
+                {
+                    STT++;
+                    int total = item.Product.Price * item.Quantity;
+                    totalBill += total;
+                    <tr>
+                        <td>@STT</td>
+                        <td>@item.Product.Name</td>
+                        <td><img src="~/new/images/@item.Product.Images" width="100" height="100" /></td>
+                        <td>
+                            <p>@item.Quantity</p>
+                        </td>
+                        <td>@item.Product.Price $</td>
+                        <td>@total $</td>
+                    </tr>
+                }
+            }
+        </table>
+        <p>Sum Total: @totalBill $ </p>
+        <input type="hidden" name="Total" value="@totalBill" />
+        <input type="hidden" name="TotalProducts" value="@STT" />
+        <a href=@Url.Action("ListCart","Product") class="btn btn-danger">Back To Cart</a>
+        <input type="submit" class="btn btn-success" value="Check Out" />
+    }
+
+</div>

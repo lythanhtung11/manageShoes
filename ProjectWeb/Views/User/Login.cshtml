@@ -1,0 +1,39 @@
+﻿@using Microsoft.AspNetCore.Http;
+@model Login
+
+<div class="login">
+    <div class="heading">
+        <form action="" style="margin: 0 auto;width:250px;" method="post">
+            <div class="input-group input-group-lg">
+                @using (Html.BeginForm("Login", "User", FormMethod.Post, new { @class = "form-horizontal", role = "form" }))
+                {
+                    @Html.ValidationMessage("Login", new { @class = " alert-danger" }){
+
+                        <div class="form-group">
+                            @Html.LabelFor(m => m.UserName)
+                            <div class="col-md-10">
+                                @Html.TextBoxFor(m => m.UserName, "", new { @class = "form-control" })
+                                @Html.ValidationMessageFor(m => m.UserName, "", new { @class = "text-danger" })
+                            </div>
+                            @*<span asp-validation-for="UserName" class="text-danger"></span>*@
+                        </div>
+                        <div class="form-group">
+                            @Html.LabelFor(m => m.Password)
+                            <div class="col-md-10">
+                                @Html.PasswordFor(m => m.Password, new { @class = "form-control" })
+                                @Html.ValidationMessageFor(m => m.Password, "", new { @class = "text-danger" })
+                            </div>
+                            @*<span asp-validation-for="Password" class="text-danger"></span>*@
+                        </div>
+                        <div class="form-group">
+                            <input type="submit" name="submit" class="btn btn-primary" value="Login" />
+                        </div>
+                    }
+                }
+            </div>
+        </form>
+    </div>
+</div>
+
+
+

@@ -1,0 +1,12 @@
+﻿@model Product
+@{
+    ViewData["Title"] = "Details";
+}
+
+<img width="300" src=~/new/images/@Model.Images />
+<br />
+
+<p>Name: @Model.Name</p>
+<p>Brand: @Model.Brand</p>
+<p>Condition: @Model.Condition</p>
+<p>Price: @Model.Price $</p>

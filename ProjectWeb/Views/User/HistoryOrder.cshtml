@@ -1,0 +1,37 @@
+﻿@model List<Receipt>
+@if (Model.Count == 0 || Model == null)
+{
+    <h1 class="align-baseline">Don't have any order yet </h1>
+}
+else
+{
+    <table class="table table-bordered table-striped style=" width="100%">
+        <thead>
+            <tr>
+                <th>
+                    Receipt ID
+                </th>
+                <th>
+                    Date
+                </th>
+                <th>
+
+                </th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var i in Model)
+            {
+                <tr>
+                    <td width="25%">MHD#@i.Id </td>
+                    <td width="50%">@i.Date.ToString("dd-MM-yyyy")</td>
+                    <td width="25%">
+                        <div class="w-100 btn-group" role="group">
+                            <a href=@Url.Action("DetailsReceipt","User", new { ID = i.Id }) class="btn btn-primary mx-1"> Details</a>
+                        </div>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+}
